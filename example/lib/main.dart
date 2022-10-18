@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(secondary: Colors.pink)),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+              .copyWith(secondary: Colors.pink)),
       home: const HomeWidget(),
     );
   }
@@ -146,8 +148,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-                          decoration:
-                              const InputDecoration(hintText: 'Amount to charge'),
+                          decoration: const InputDecoration(
+                              hintText: 'Amount to charge'),
                           onSaved: (value) => amount = double.tryParse(value),
                           keyboardType: TextInputType.number,
                         ),
@@ -162,7 +164,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-                          decoration: const InputDecoration(hintText: 'orderRef'),
+                          decoration:
+                              const InputDecoration(hintText: 'orderRef'),
                           onSaved: (value) => orderRef = value,
                           initialValue:
                               "rave_flutter-${DateTime.now().toString()}",
@@ -171,7 +174,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-                          decoration: const InputDecoration(hintText: 'Narration'),
+                          decoration:
+                              const InputDecoration(hintText: 'Narration'),
                           onSaved: (value) => narration = value,
                         ),
                         const SizedBox(height: 20),
@@ -182,18 +186,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-                          decoration:
-                              const InputDecoration(hintText: 'Country code e.g NG'),
+                          decoration: const InputDecoration(
+                              hintText: 'Country code e.g NG'),
                           onSaved: (value) => country = value,
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-                          decoration: const InputDecoration(hintText: 'First name'),
+                          decoration:
+                              const InputDecoration(hintText: 'First name'),
                           onSaved: (value) => firstName = value,
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
-                          decoration: const InputDecoration(hintText: 'Last name'),
+                          decoration:
+                              const InputDecoration(hintText: 'Last name'),
                           onSaved: (value) => lastName = value,
                         ),
                       ],
@@ -315,7 +321,12 @@ class _HomeWidgetState extends State<HomeWidget> {
     var response = await RavePayManager()
         .prompt(context: context, initializer: initializer);
     print(response);
-    scaffoldKey.currentState
-        .showSnackBar(SnackBar(content: Text(response?.message)));
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(response.message),
+      ),
+    );
+    // scaffoldKey.currentState
+    //     .showSnackBar(SnackBar(content: Text(response?.message)));
   }
 }
