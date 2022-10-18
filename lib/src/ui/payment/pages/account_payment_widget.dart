@@ -72,14 +72,16 @@ class _AccountPaymentWidgetState
           widget = Container(
             width: double.infinity,
             margin: EdgeInsets.symmetric(vertical: 20),
-            child: FlatButton(
+            child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: MyColors.buttercup,
+                  padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+                ),
                 onPressed: () {
                   setState(() {
                     _banks = BankService.instance!.fetchBanks;
                   });
                 },
-                color: MyColors.buttercup,
-                padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
                 child: Text(
                   'Display banks',
                   style: TextStyle(
@@ -104,7 +106,9 @@ class _AccountPaymentWidgetState
                   ? null
                   : _selectedBank!.showAccountNumField()
                       ? _accountFocusNode
-                      : _selectedBank!.showBVNField() ? _bvnFocusNode : null),
+                      : _selectedBank!.showBVNField()
+                          ? _bvnFocusNode
+                          : null),
           onSaved: (value) => payload!.phoneNumber = value),
       _selectedBank != null && _selectedBank!.showAccountNumField()
           ? AccountNumberField(
