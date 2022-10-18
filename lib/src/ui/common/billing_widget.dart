@@ -26,7 +26,8 @@ class _BillingWidgetState extends State<BillingWidget> {
       padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       child: Form(
         key: _formKey,
-        autovalidateMode: _autoValidate? AutovalidateMode.always: AutovalidateMode.disabled,
+        autovalidateMode:
+            _autoValidate ? AutovalidateMode.always : AutovalidateMode.disabled,
         child: Column(
           children: <Widget>[
             Text(
@@ -72,8 +73,14 @@ class _BillingWidgetState extends State<BillingWidget> {
             Container(
               width: double.infinity,
               margin: EdgeInsets.only(top: 20, bottom: 10),
-              child: FlatButton(
-                color: MyColors.buttercup,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  backgroundColor: MyColors.buttercup,
+                  padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                ),
                 child: Text(
                   "Continue",
                   style: TextStyle(
@@ -81,7 +88,6 @@ class _BillingWidgetState extends State<BillingWidget> {
                       color: Colors.white,
                       fontSize: 15),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
                 onPressed: _validateInputs,
               ),
             )
