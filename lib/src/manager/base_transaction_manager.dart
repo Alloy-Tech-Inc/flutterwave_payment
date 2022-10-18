@@ -89,10 +89,11 @@ abstract class BaseTransactionManager {
   _validateCharge(otp) async {
     try {
       setConnectionState(ConnectionState.waiting);
-      var response = await service!.validateCardCharge(ValidateChargeRequestBody(
-          transactionReference: flwRef,
-          otp: otp,
-          pBFPubKey: payload!.pbfPubKey));
+      var response = await service!.validateCardCharge(
+          ValidateChargeRequestBody(
+              transactionReference: flwRef,
+              otp: otp,
+              pBFPubKey: payload!.pbfPubKey));
       setConnectionState(ConnectionState.done);
 
       var status = response.status;
@@ -149,8 +150,8 @@ abstract class BaseTransactionManager {
       child = AlertDialog(
         content: content,
         actions: <Widget>[
-          FlatButton(onPressed: closeDialog, child: Text('NO')),
-          FlatButton(onPressed: charge, child: Text('YES'))
+          TextButton(onPressed: closeDialog, child: Text('NO')),
+          TextButton(onPressed: charge, child: Text('YES'))
         ],
       );
     }
