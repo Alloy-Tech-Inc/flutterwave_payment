@@ -48,8 +48,8 @@ class _HomeWidgetState extends State<HomeWidget> {
   List<SubAccount> subAccounts = [];
   String email;
   double amount;
-  String publicKey = "PASTE PUBLIC KEY HERE";
-  String encryptionKey = "PASTE ENCRYPTION KEY HERE";
+  String publicKey = "FLWPUBK_TEST-19ac6883a26ca6bb9f67f5917c15ad3f-X";
+  String encryptionKey = "FLWSECK_TESTed8338f58449";
   String txRef;
   String orderRef;
   String narration;
