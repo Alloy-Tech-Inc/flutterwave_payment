@@ -61,8 +61,8 @@ abstract class BasePaymentPageState<T extends BasePaymentPage> extends State<T>
     if (!supported) {
       _infoAnimationController = AnimationController(
           vsync: this, duration: Duration(milliseconds: 400));
-      _infoAnimation =
-          Tween<double>(begin: 1.0, end: 1.2).animate(_infoAnimationController!);
+      _infoAnimation = Tween<double>(begin: 1.0, end: 1.2)
+          .animate(_infoAnimationController!);
       _infoAnimationController!.addStatusListener(_onInfoAnimationChange);
     }
     super.initState();
@@ -136,10 +136,12 @@ abstract class BasePaymentPageState<T extends BasePaymentPage> extends State<T>
     var payButton = Container(
       width: double.infinity,
       margin: EdgeInsets.only(top: 20, bottom: 15),
-      child: FlatButton(
+      child: TextButton(
         onPressed: _validateInputs,
-        color: MyColors.buttercup,
-        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        style: TextButton.styleFrom(
+          backgroundColor: MyColors.buttercup,
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+        ),
         child: Row(
           children: <Widget>[
             Expanded(
@@ -180,7 +182,8 @@ abstract class BasePaymentPageState<T extends BasePaymentPage> extends State<T>
 
     return Form(
       key: formKey,
-      autovalidateMode: _autoValidate? AutovalidateMode.always: AutovalidateMode.disabled,
+      autovalidateMode:
+          _autoValidate ? AutovalidateMode.always : AutovalidateMode.disabled,
       child: Column(
         children: amountAndEmailFields
           ..insert(0, topWidget)
